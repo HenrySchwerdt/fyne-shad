@@ -23,6 +23,7 @@ type Button struct {
 	rectangle *canvas.Rectangle
 }
 
+var _ fyne.CanvasObject = (*Button)(nil)
 var _ fyne.Tabbable = (*Button)(nil)
 var _ desktop.Hoverable = (*Button)(nil)
 
