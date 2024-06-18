@@ -154,14 +154,16 @@ func (*badgeRenderer) Destroy() {
 }
 
 func (r *badgeRenderer) Layout(s fyne.Size) {
+	size, _ := fyne.CurrentApp().Driver().RenderedTextSize(r.widget.text, r.widget.fontSize, r.widget.fontWeight)
 	r.background.Resize(s)
 	r.background.FillColor = r.widget.backgroundColor
-	r.text.Move(fyne.NewPos(s.Width/2-r.text.MinSize().Width/2, s.Height/2-r.text.MinSize().Height/2))
-	r.text.Resize(fyne.NewSize(r.text.MinSize().Width, r.text.MinSize().Height))
+	r.text.Move(fyne.NewPos(s.Width/2-size.Width/2, s.Height/2-size.Height/2))
+	r.text.Resize(fyne.NewSize(size.Width, size.Height))
 }
 
 func (b *badgeRenderer) MinSize() fyne.Size {
-	return b.text.MinSize().Add(fyne.NewSize(8, 4))
+	size, _ := fyne.CurrentApp().Driver().RenderedTextSize(b.widget.text, b.widget.fontSize, b.widget.fontWeight)
+	return size.Add(fyne.NewSize(8, 4))
 }
 
 func (r *badgeRenderer) Objects() []fyne.CanvasObject {

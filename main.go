@@ -7,7 +7,6 @@ import (
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/data/binding"
-	"github.com/HenrySchwerdt/fyne-shad/s_style"
 	"github.com/HenrySchwerdt/fyne-shad/widgets"
 )
 
@@ -16,13 +15,9 @@ func main() {
 	w := a.NewWindow("Hello World")
 	w.SetPadded(true)
 	float := binding.NewFloat()
-	progess := widgets.NewProgressBuilder().BindProgress(float).Build()
-	c := container.NewVBox(widgets.NewButtonWithStyle("Hallo Welt", &s_style.DefaultButtonStyle, &s_style.DefaultTextStyle, func() {
-		w.SetTitle("Hallo Fyne!")
-	}),
-		progess,
-		widgets.NewInputBuilder().Build(),
+	c := container.NewVBox(
 		widgets.NewBadgeBuilder().Text("Badge").Build(),
+		widgets.NewSkeletonBuilder().Build(),
 	)
 	go func() {
 		for i := 0.0; i <= 1.0; i += 0.001 {
