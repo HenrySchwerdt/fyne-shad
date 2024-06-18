@@ -36,5 +36,9 @@ type BorderRadiusable[B any] interface {
 }
 
 type Tappable[B any] interface {
-	OnTapped(f func()) B
+	OnTapped(f func()) *B
+}
+
+type Sizeable[B any] interface {
+	Size(size fyne.Size) *B
 }
