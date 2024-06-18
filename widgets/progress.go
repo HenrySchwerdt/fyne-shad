@@ -10,7 +10,6 @@ import (
 )
 
 // Builder
-
 type progressBuilder struct {
 	progress     float64
 	foreground   color.Color
@@ -31,8 +30,8 @@ func NewProgressBuilder() *progressBuilder {
 		progress:     0.5,
 		foreground:   color.RGBA{R: 50, G: 50, B: 50, A: 255},
 		background:   color.RGBA{R: 200, G: 200, B: 200, A: 255},
-		borderRadius: 3,
-		size:         fyne.NewSize(100, 5),
+		borderRadius: 4,
+		size:         fyne.NewSize(100, 8),
 	}
 }
 

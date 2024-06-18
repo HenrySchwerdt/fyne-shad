@@ -14,13 +14,15 @@ import (
 func main() {
 	a := app.New()
 	w := a.NewWindow("Hello World")
-	w.SetPadded(false)
+	w.SetPadded(true)
 	float := binding.NewFloat()
 	progess := widgets.NewProgressBuilder().BindProgress(float).Build()
 	c := container.NewVBox(widgets.NewButtonWithStyle("Hallo Welt", &s_style.DefaultButtonStyle, &s_style.DefaultTextStyle, func() {
 		w.SetTitle("Hallo Fyne!")
 	}),
 		progess,
+		widgets.NewInputBuilder().Build(),
+		widgets.NewBadgeBuilder().Text("Badge").Build(),
 	)
 	go func() {
 		for i := 0.0; i <= 1.0; i += 0.001 {
